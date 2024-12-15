@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
@@ -53,4 +54,23 @@ class User extends Authenticatable
     public function setPasswordAttribute($value){
         $this->attributes['password'] = Hash::make($value);
     }
+    public function shelter():HasOne{
+        return $this->hasOne(Shelter::class,'owner_id');
+    }
+    public function pets(){
+        return $this->hasMany(Pet::class,'employee_id');
+    }
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
+    public function adoptions(){
+        return $this->hasMany(Adoption::class);
+    }
+    public function formMessages(){
+        return $this->hasMany(Form::class);
+    }
+
 }

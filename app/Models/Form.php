@@ -18,4 +18,13 @@ class Form extends Model
      * @var list<string>
      */
     protected $hidden = ['user_id',];
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    public function shelter(){
+        return $this->belongsTo(Shelter::class);
+    }
+    public function pet(){
+        return $this->belongsTo(Pet::class,'pet_id');
+    }
 }

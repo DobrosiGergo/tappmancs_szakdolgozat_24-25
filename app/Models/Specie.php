@@ -11,4 +11,7 @@ class Specie extends Model
     protected $table = 'species';
     protected $fillable=['name'];
     public $timestapms = false;
+    public function pets(){
+        return $this->hasMany(Pet::class);
+    }
 }

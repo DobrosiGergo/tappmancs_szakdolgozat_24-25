@@ -10,4 +10,10 @@ class Adoption extends Model
     protected $hidden =[
         'user_id'
     ];
+    public function pet(){
+        return $this->belongsTo(Pet::class);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

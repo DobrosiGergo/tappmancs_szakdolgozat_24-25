@@ -12,5 +12,8 @@ class Breed extends Model
 
     protected $fillable= ['name'];
     public $timestapms = false;
+    public function pets(){
+        return $this->hasMany(Pet::class);
+    }
 
 }

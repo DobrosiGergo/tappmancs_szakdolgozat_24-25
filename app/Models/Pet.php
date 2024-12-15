@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
 class Pet extends Model
 {
 
@@ -33,4 +32,32 @@ class Pet extends Model
         'status' => 'Free',
         'images' => []
     ];
+    public function shelter(){
+        return $this->belongsTo(Shelter::class);
+    }
+    public function species(){
+        return $this->belongsTo(Specie::class);
+    }
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
+    public function adoption(){
+        return $this->hasOne(Adoption::class);
+    }
+    public function breed(){
+        return $this->belongsTo(Breed::class);
+    }
+    public function empoloyee(){
+        return $this->belongsTo(User::class,'employee_id');
+    }
+    public function formMessages(){
+        return $this->hasMany(Form::class,'pet_id');
+    }
+    public function like(){
+        return $this->hasMany(Like::class);
+    }
+
 }
