@@ -9,7 +9,7 @@
             @else
             <div class="flex justify-end mr-2">
                 <a href="{{ route('login') }}" class="bg-[#333333] text-white md:px-10 px-6 py-3 rounded-full text-base shadow-[0px_4px_10px_rgba(0,0,0,0.25)]">Bejelentkezés</a>
-                <a href="{{ route('register') }}" class="bg-[#333333] text-white md:px-10 px-6 py-3 rounded-full text-base ml-2 shadow-[0px_4px_10px_rgba(0,0,0,0.25)]">Regisztráció</a>
+                <a href="{{ route('role') }}" class="bg-[#333333] text-white md:px-10 px-6 py-3 rounded-full text-base ml-2 shadow-[0px_4px_10px_rgba(0,0,0,0.25)]">Regisztráció</a>
             </div>
             @endauth
         @endif 
@@ -33,7 +33,8 @@
                 <div class="flex flex-col justify-center items-center w-full">
                     <div class="relative inline-block md:mt-8 md:w-[673px] md:h-[110px]">
                         <div class="absolute top-3 left-3 w-full  h-full bg-neutral-500 rounded-full "></div>
-                            <button class="relative px-6 py-3 md:w-[673px] md:h-[110px] bg-[#333333] text-white md:text-3xl rounded-full shadow-md ">
+                            <button class="relative px-6 py-3 md:w-[673px] md:h-[110px] bg-[#333333] text-white md:text-3xl rounded-full shadow-md 
+                            transition-all before:absolute before:right-0 before:top-0 before:h-full before:w-6 before:translate-x-24 before:rotate-8 before:bg-white before:opacity-10 before:duration-700 hover:shadow-white hover:before:-translate-x-[673px]">
                                     Tudj meg többet!
                             </button>
                     </div>
@@ -59,11 +60,11 @@
                
             </div>
             
-            <div class="w-full md:w-1/2 mr-5">
+            <div class="w-full  md:w-1/2 mr-5">
             <div class="relative">
-                <div class="absolute -top-4 left-4 w-full  h-full bg-neutral-500 rounded-[300px]"></div>
+                <div class="absolute -top-4 left-4 w-full  h-[800px] bg-neutral-500 rounded-[300px]"></div>
                     <div class="relative rounded-3xl overflow-hidden ">
-                        <img src="{{ asset('images/41b6d401-3bc6-4fea-b5f8-f02cce22a6ac_removalai_preview.svg') }}" alt="Örökbefogadás" class="h-[800px] w-full h-full object-cover" 
+                        <img src="{{ asset('images/41b6d401-3bc6-4fea-b5f8-f02cce22a6ac_removalai_preview.svg') }}" alt="Örökbefogadás" class="h-[800px] w-full object-cover" 
                             onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=Take+me+home';">
                     </div>
                 </div>
