@@ -64,7 +64,7 @@
             <div class="relative">
                 <div class="absolute -top-4 left-4 w-full  h-[800px] bg-neutral-500 rounded-[300px]"></div>
                     <div class="relative rounded-3xl overflow-hidden ">
-                        <img src="{{ asset('images/41b6d401-3bc6-4fea-b5f8-f02cce22a6ac_removalai_preview.svg') }}" alt="Örökbefogadás" class="h-[800px] w-full object-cover" 
+                        <img src="{{ asset('images/41b6d401-3bc6-4fea-b5f8-f02cce22a6ac_removalai_preview.svg') }}" alt="Örökbefogadás" class="rounded-[350px] h-[800px] w-full object-cover" 
                             onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=Take+me+home';">
                     </div>
                 </div>
