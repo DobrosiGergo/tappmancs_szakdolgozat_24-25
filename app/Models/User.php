@@ -51,9 +51,6 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function setPasswordAttribute($value){
-        $this->attributes['password'] = Hash::make($value);
-    }
     public function shelter():HasOne{
         return $this->hasOne(Shelter::class,'owner_id');
     }

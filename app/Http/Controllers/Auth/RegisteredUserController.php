@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Log;
 
 class RegisteredUserController extends Controller
 {
@@ -77,9 +78,13 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($validatedData['password']),
             'phoneNumber' => $validatedData['phoneNumber'],
         ];
+        
+        // Log the hash before User::create
+        
+        $user = User::create($data);
+        
         session()->forget(['role', 'menhely_role']); // Session ürítése
     
-        $user = User::create($data);
         event(new Registered($user));
 
         Auth::login($user);
