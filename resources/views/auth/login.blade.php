@@ -1,6 +1,4 @@
 <x-app-layout>
-<p>{{ json_encode(auth()->user(), JSON_PRETTY_PRINT) }}</p>
-
     <div class="flex justify-start m-2">
         <a class="underline" href="{{ url()->previous() }}"><-</a>
     </div>
