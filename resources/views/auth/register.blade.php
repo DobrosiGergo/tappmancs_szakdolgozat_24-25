@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-guest-layout>
     <div class="flex flex-col md:flex-row mb-10">
         <!-- Bal oldal: Regisztrációs űrlap -->
         <div class="w-1/2 pr-6 p-12">
@@ -44,4 +44,4 @@
             <img src="{{ asset('images/collar-dog.svg') }}" alt="Regisztrációs kép" class=" md:h-[1200px] md:w-[650px] border-[3px] border-[#333333] rounded-full">
         </div>
     </div>
-</x-app-layout>
+</x-guest-layout>

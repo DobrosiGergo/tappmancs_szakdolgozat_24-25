@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-guest-layout>
     <div class="flex justify-start m-2">
         <a class="underline" href="{{ url()->previous() }}"><-</a>
     </div>
@@ -62,4 +62,4 @@
             </form>
         </div>
     </div>
-</x-app-layout>
+</x-guest-layout>

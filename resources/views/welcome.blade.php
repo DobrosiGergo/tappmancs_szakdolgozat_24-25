@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-guest-layout>
     @section('title', 'Tappmancs HomePage')
     
     <div class="px-6 py-4 w-full">
@@ -87,4 +87,4 @@
         
     </div>
     @endif
-</x-app-layout>
+</x-guest-layout>

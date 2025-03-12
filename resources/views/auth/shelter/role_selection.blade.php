@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-guest-layout>
     <div class="flex flex-col md:flex-row gap-8 mb-10">
         <div class="w-full md:w-1/2 p-10">
             <h1 class="text-5xl text-[#333333] mb-6">Szerepkörök információ</h1>
@@ -40,4 +40,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-guest-layout>

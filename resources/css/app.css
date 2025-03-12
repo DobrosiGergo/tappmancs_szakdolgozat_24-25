@@ -6,3 +6,7 @@ body{
     font-family: 'Poppins';
     overflow-x: hidden;
 }
+#main-content {
+    flex-grow: 1;
+    min-width: 0;
+}

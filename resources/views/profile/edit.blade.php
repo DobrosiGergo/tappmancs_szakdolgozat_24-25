@@ -1,8 +1,20 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
+        <div class="felx justify-center items-center w-full">
+            <!-- Greeting and Date -->
+            <div class="mb-4">
+                <h1 class="text-xl font-semibold">Üdvözöllek, Bekre Pál</h1>
+                <p class="text-gray-500">Péntek, 13 December 2022</p>
+            </div>
+            
+            <!-- Dark Section with Icon and Button -->
+            <div class="flex items-center justify-between bg-gray-700 text-white rounded-lg overflow-hidden">
+                <div class="p-4 flex items-center gap-2">
+                    <span class="text-2xl">⚙️</span>
+                </div>
+                <a href="#" class="text-sm text-white underline p-4">Feltöltéseim</a>
+            </div>
+        </div>
     </x-slot>
 
     <div class="py-12">

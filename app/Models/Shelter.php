@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class shelter extends Model
+class Shelter extends Model
 {
     protected $table = 'shelter';
 
