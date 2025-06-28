@@ -1,20 +1,44 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ShelterController;
 
+/*
+|--------------------------------------------------------------------------
+| Public Routes
+|--------------------------------------------------------------------------
+*/
+
+// Kezdőlap
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Publikus menhely lista
+Route::get('/shelters', [ShelterController::class, 'index'])->name('shelters.index');
+Route::get('/shelters/{shelter}', [ShelterController::class, 'show'])->name('shelters.show');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+/*
+|--------------------------------------------------------------------------
+| Authenticated Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    // Dashboard (csak bejelentkezett, verifikált usernek)
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+  
 });
+
+/*
+|--------------------------------------------------------------------------
+| Auth Routes (Breeze vagy hasonló)
+|--------------------------------------------------------------------------
+*/
 
 require __DIR__.'/auth.php';

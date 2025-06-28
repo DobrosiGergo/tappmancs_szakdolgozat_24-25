@@ -1,6 +1,7 @@
 <x-guest-layout>
     <div class=" mx-auto p-5">
         <h1 class="text-6xl ml-4 text-[#333333]">Tappancs</h1>
+
         <p class="mt-8 ml-4 text-[36px] text-[#333333]">
             <strong>Örökbefogadóként:</strong> Találd meg a hozzád illő négylábú társat! Böngészd végig a menhelyek által feltöltött állatok profiljait, és kezdj új fejezetet az életükben – és a sajátodban is.
         </p>

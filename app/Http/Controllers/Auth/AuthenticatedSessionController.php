@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-
+use App\Helpers\Tools;
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -27,7 +27,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
+        Tools::flash("Sikeres bejelentkezés","success");
         return redirect()->intended(route('dashboard', absolute: false));
     }
 

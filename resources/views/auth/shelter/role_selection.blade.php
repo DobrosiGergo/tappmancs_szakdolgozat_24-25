@@ -1,8 +1,7 @@
 <x-guest-layout>
     <div class="flex flex-col md:flex-row gap-8 mb-10">
         <div class="w-full md:w-1/2 p-10">
-            <h1 class="text-5xl text-[#333333] mb-6">Szerepkörök információ</h1>
-            
+            <h1 class="text-5xl text-[#333333] mb-6">Szerepkörök információ</h1>            
             <p class="text-2xl leading-[40px] text-[#333333] mb-4 px-6">
                 <strong>Menhely dolgozó:</strong> A dolgozói szerepkör lényege, hogy a menhelyen dolgozó személy az általa képviselt menhely adatait tudja kezelni és karbantartani, ezzel biztosítva a megfelelő működést és nyilvántartást.
             </p>

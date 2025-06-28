@@ -5,14 +5,13 @@ namespace App\View\Components;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
-use Livewire\Attributes\Layout;
-
 class AppLayout extends Component
 {
-    #[Layout('layouts.app')]
-    public function render()
+    /**
+     * Get the view / contents that represents the component.
+     */
+    public function render(): View
     {
         return view('layouts.app');
-        // Eltávolítottuk a styleClass átadását, mert JavaScript kezeli
     }
 }

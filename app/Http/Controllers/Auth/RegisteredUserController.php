@@ -32,6 +32,8 @@ class RegisteredUserController extends Controller
     public function storeRole(Request $request){
         if(session('role')){
             session()->forget('role');
+        }if(session('role_shelter')){
+            session()->forget('role_shelter');
         }
         $request->validate([
             'role' => 'required|in:shelter,User'
@@ -83,12 +85,14 @@ class RegisteredUserController extends Controller
         
         $user = User::create($data);
         
-        session()->forget(['role', 'menhely_role']); // Session ürítése
-    
-        event(new Registered($user));
+        session()->forget(['role', 'menhely_role']); 
+        Auth::login($user); 
 
-        Auth::login($user);
-
-        return redirect(route('dashboard', absolute: false));
+        if ($user->type === "shelterOwner") {
+            return redirect()->route('shelter.setup');
+        } else {
+            event(new Registered($user));
+            return redirect()->route('dashboard');
+        }
     }
 }

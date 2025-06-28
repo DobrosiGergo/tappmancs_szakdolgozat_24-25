@@ -14,14 +14,13 @@ class Shelter extends Model
     ];
     protected $fillable = [
         'name',
-        'content',
-        'images'
-    ];
-    protected $hidden =[
+        'description',
+        'images',
         'owner_id'
     ];
+ 
     protected $attributes=[
-        'images' => []
+        'images' => '[]'
     ];
     public function pets(){
         return $this->hasMany(Pet::class);

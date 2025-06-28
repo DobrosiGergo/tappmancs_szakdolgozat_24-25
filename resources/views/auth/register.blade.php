@@ -1,7 +1,8 @@
 <x-guest-layout>
-    <div class="flex flex-col md:flex-row mb-10">
+  <div class="flex flex-col md:flex-row mb-10">
         <!-- Bal oldal: Regisztrációs űrlap -->
         <div class="w-1/2 pr-6 p-12">
+
             <h2 class="text-2xl font-bold mb-4">HOZZ LÉTRE SAJÁT FIÓKOT</h2>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
@@ -41,7 +42,7 @@
         </div>
         <!-- Jobb oldal: Kép -->
         <div class="w-1/2 flex items-center justify-center">
-            <img src="{{ asset('images/collar-dog.svg') }}" alt="Regisztrációs kép" class=" md:h-[1200px] md:w-[650px] border-[3px] border-[#333333] rounded-full">
+            <img src="{{ asset('images/collar-dog.svg') }}" alt="Regisztrációs kép" class="  md:w-[650px] border-[3px] border-[#333333] rounded-full">
         </div>
     </div>
 </x-guest-layout>

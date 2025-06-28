@@ -1,23 +1,21 @@
 <x-guest-layout>
-    @section('title', 'Tappmancs HomePage')
-    
+    @section('title', 'Tappmancs DashboardPage')
     <div class="px-6 py-4 w-full">
         <div>
-        @if (Route::has('login'))
-            @auth
-                <a href="{{ url('/dashboard') }}" class="bg-[#333333] text-white px-6 py-3 rounded-full text-base shadow-[0px_4px_10px_rgba(0,0,0,0.25)]">Dashboard</a>
+            @if(Auth::check())
+                <div class="flex justify-end mr-2">
+                    <a href="{{ url('/dashboard') }}" class="bg-[#333333] text-white px-6 py-3 rounded-full text-base shadow-[0px_4px_10px_rgba(0,0,0,0.25)]">Dashboard</a>
+                </div>  
             @else
             <div class="flex justify-end mr-2">
                 <a href="{{ route('login') }}" class="bg-[#333333] text-white md:px-10 px-6 py-3 rounded-full text-base shadow-[0px_4px_10px_rgba(0,0,0,0.25)]">Bejelentkezés</a>
                 <a href="{{ route('role') }}" class="bg-[#333333] text-white md:px-10 px-6 py-3 rounded-full text-base ml-2 shadow-[0px_4px_10px_rgba(0,0,0,0.25)]">Regisztráció</a>
             </div>
-            @endauth
-        @endif 
+            @endif
         </div>
     </div>
 
-    @if (!Auth::check())
-    <div class="md:mx-2 md:p-6 w-full p-2">
+    <div class="md:mx-2 md:p-6 w-[99%] p-2">
         <h1 class="md:text-8xl text-6xl text-[#333333] mb-4 md:mb-10">Tappmancs</h1>
 
         <!-- Main Content Section with Image -->
@@ -60,11 +58,11 @@
                
             </div>
             
-            <div class="w-full  md:w-1/2 mr-5">
+            <div class="w-[99%] md:w-1/2 mr-5">
             <div class="relative">
-                <div class="absolute -top-4 left-4 w-full  h-[800px] bg-neutral-500 rounded-[300px]"></div>
+                <div class="absolute -top-4 left-4 w-[99%]  h-[800px] bg-neutral-500 rounded-[300px]"></div>
                     <div class="relative rounded-3xl overflow-hidden ">
-                        <img src="{{ asset('images/41b6d401-3bc6-4fea-b5f8-f02cce22a6ac_removalai_preview.svg') }}" alt="Örökbefogadás" class="rounded-[350px] h-[800px] w-full object-cover" 
+                        <img src="{{ asset('images/41b6d401-3bc6-4fea-b5f8-f02cce22a6ac_removalai_preview.svg') }}" alt="Örökbefogadás" class="rounded-[350px] h-[800px] w-[99%] object-cover" 
                             onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400?text=Take+me+home';">
                     </div>
                 </div>
@@ -86,5 +84,4 @@
             </a>
         
     </div>
-    @endif
 </x-guest-layout>

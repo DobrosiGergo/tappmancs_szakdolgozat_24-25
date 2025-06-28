@@ -29,48 +29,17 @@
                     </header>
                 @endisset
                 <main>
+                @if (session('flash'))
+                    <x-flash-message 
+                        :message="session('flash')['message']" 
+                        :type="session('flash')['type'] ?? 'info'" 
+                    />
+                @endif
                     {{ $slot }}
                 </main>
             </div>
             <script>
-    document.addEventListener('livewire:initialized', function () {
-        Livewire.on('sidebarToggled', function (styleClass) {
-            console.log('Sidebar toggled, new style class:', styleClass);
-            
-            // Megkeressük a tartalom konténert - mindkét módon próbáljuk
-            const contentContainer = document.getElementById('content-container') || 
-                                     document.querySelector('.flex-1.p-6');
-            
-            if (contentContainer) {
-                // Régi stílusok eltávolítása
-                contentContainer.classList.remove('ml-64', 'ml-16');
-                // Új stílus hozzáadása - egyszerű string esetén
-                if (typeof styleClass === 'string') {
-                    contentContainer.classList.add(styleClass);
-                } 
-                // Objektum esetén (ami a hibában látható)
-                else if (styleClass && styleClass.styleClass) {
-                    contentContainer.classList.add(styleClass.styleClass);
-                }
-                console.log('Style updated successfully');
-            } else {
-                console.error('Content container not found! Tried both ID and class selector.');
-                // Próbáljuk meg minden .flex-1 osztályú elemre alkalmazni
-                const flexContainers = document.querySelectorAll('.flex-1');
-                if (flexContainers.length > 0) {
-                    console.log('Found', flexContainers.length, 'flex-1 containers, applying to all');
-                    flexContainers.forEach(container => {
-                        container.classList.remove('ml-64', 'ml-16');
-                        if (typeof styleClass === 'string') {
-                            container.classList.add(styleClass);
-                        } else if (styleClass && styleClass.styleClass) {
-                            container.classList.add(styleClass.styleClass);
-                        }
-                    });
-                }
-            }
-        });
-    });
+    
 </script>
         </div>
         @livewireScripts

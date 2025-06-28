@@ -1,4 +1,4 @@
-<section>
+<x-app-layout>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Profile Information') }}
@@ -9,11 +9,11 @@
         </p>
     </header>
 
-    <form id="send-verification" method="post" action="">
+    <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('settings.profile.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
 
@@ -61,4 +61,4 @@
             @endif
         </div>
     </form>
-</section>
+</x-app-layout>
