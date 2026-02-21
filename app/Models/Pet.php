@@ -2,12 +2,20 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasUuid;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 class Pet extends Model
 {
+    use HasFactory, HasUuid;
 
-    protected $table = "pets";
+    protected $table = 'pets';
+
+    protected $appends = ['images_safe', 'first_image_url'];
+
     protected $fillable = [
+        'uuid',
         'name',
         'slug',
         'age',
@@ -15,49 +23,97 @@ class Pet extends Model
         'status',
         'description',
         'images',
-        'species_id'       
+        'species_id',
+        'shelter_id',
+        'employee_id',
+        'arrival_date',
     ];
-    protected function casts(){
+
+    protected function casts()
+    {
         return [
             'arrival_date' => 'datetime',
+            'images'       => 'array',
         ];
     }
-      /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
+
     protected $hidden = ['employee_id'];
-    protected $attributes =[
-        'status' => 'Free',
-        'images' => []
+
+    protected $attributes = [
+        'status' => 'free',
+        'images' => '[]',
     ];
-    public function shelter(){
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::bootHasUuid();
+    }
+
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
+
+    public function shelter()
+    {
         return $this->belongsTo(Shelter::class);
     }
-    public function species(){
-        return $this->belongsTo(Specie::class);
+
+    public function species()
+    {
+        return $this->belongsTo(Specie::class, 'species_id');
     }
-    public function comments(){
+
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
-    public function likes(){
-        return $this->hasMany(Like::class);
-    }
-    public function adoption(){
-        return $this->hasOne(Adoption::class);
-    }
-    public function breed(){
-        return $this->belongsTo(Breed::class);
-    }
-    public function empoloyee(){
-        return $this->belongsTo(User::class,'employee_id');
-    }
-    public function formMessages(){
-        return $this->hasMany(Form::class,'pet_id');
-    }
-    public function like(){
+
+    public function likes()
+    {
         return $this->hasMany(Like::class);
     }
 
+    public function adoption()
+    {
+        return $this->hasOne(Adoption::class);
+    }
+
+    public function breed()
+    {
+        return $this->belongsTo(Breed::class);
+    }
+
+    public function employee()
+    {
+        return $this->belongsTo(User::class, 'employee_id');
+    }
+
+    public function formMessages()
+    {
+        return $this->hasMany(Form::class, 'pet_id');
+    }
+
+    public function getImagesSafeAttribute()
+    {
+        if (is_array($this->images)) {
+            return $this->images;
+        }
+        if (is_string($this->images)) {
+            $tmp = json_decode($this->images, true);
+            if (json_last_error() === JSON_ERROR_NONE && is_array($tmp)) {
+                return $tmp;
+            }
+        }
+
+        return [];
+    }
+
+    public function getFirstImageUrlAttribute()
+    {
+        $arr = $this->images_safe;
+
+        return count($arr) ? asset('storage/' . $arr[0]) : null;
+    }
 }

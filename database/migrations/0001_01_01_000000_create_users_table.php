@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phoneNumber')->nullable();
-            $table->enum('type',['Developer','User','Guest','Shelterowner','Shelterworker']);
+            $table->enum('type', ['Developer', 'User', 'Guest', 'Shelterowner', 'Shelterworker']);
             $table->rememberToken();
             $table->timestamps();
         });

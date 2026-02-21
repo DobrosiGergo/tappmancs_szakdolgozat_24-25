@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Helpers;
 
 class Tools
@@ -7,7 +8,7 @@ class Tools
     {
         session()->flash('flash', [
             'message' => $message,
-            'type' => $type,
+            'type'    => $type,
         ]);
     }
 }

@@ -125,13 +125,10 @@
         Livewire.on('sidebarToggled', function (styleClass) {
             console.log('Sidebar toggled, new style class:', styleClass);
             
-            // Megkeressük a tartalom konténert
             const contentContainer = document.querySelector('.flex-1.p-6');
             
             if (contentContainer) {
-                // Régi stílusok eltávolítása
                 contentContainer.classList.remove('ml-64', 'ml-16');
-                // Új stílus hozzáadása
                 contentContainer.classList.add(styleClass);
             } else {
                 console.error('Content container not found with selector: .flex-1.p-6');

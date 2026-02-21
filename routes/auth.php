@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -10,15 +9,13 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Http\Controllers\ShelterController;
-use App\Http\Controllers\SettingsController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
 | Guest Routes (nem hitelesített felhasználóknak)
 |--------------------------------------------------------------------------
 */
-
 Route::middleware('guest')->group(function () {
     // Role kiválasztása regisztrációnál
     Route::get('register/role', [RegisteredUserController::class, 'showRole'])->name('role');
@@ -41,9 +38,6 @@ Route::middleware('guest')->group(function () {
     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
     Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
     Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.store');
-
-    // Shelter létrehozási űrlap megjelenítése
-    Route::get('/shelter/create', [ShelterController::class, 'create'])->name('shelter.create');
 });
 
 /*
@@ -51,26 +45,7 @@ Route::middleware('guest')->group(function () {
 | Authenticated Routes (hitelesített felhasználóknak)
 |--------------------------------------------------------------------------
 */
-
 Route::middleware('auth')->group(function () {
-    // settings
-    Route::prefix('settings')->name('settings.')->group(function () {
-        Route::get('/', [SettingsController::class, 'index'])->name('index');
-
-        Route::get('/profile', [SettingsController::class, 'editProfile'])->name('profile');
-        Route::put('/profile', [SettingsController::class, 'updateProfile'])->name('profile.update');
-
-        Route::get('/password', [SettingsController::class, 'editPassword'])->name('password');
-
-        Route::get('/delete', [SettingsController::class, 'editDelete'])->name('delete');
-        Route::delete('/delete', [SettingsController::class, 'deleteAccount'])->name('delete.confirm');
-
-    });
-
-    // Shelter létrehozás, setup
-    Route::post('/shelter', [ShelterController::class, 'store'])->name('shelter.store');
-    Route::get('/shelter/setup', [ShelterController::class, 'setup'])->name('shelter.setup');
-
     // Email verifikáció
     Route::get('verify-email', EmailVerificationPromptController::class)->name('verification.notice');
     Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)

@@ -1,9 +1,7 @@
 <x-mail::layout>
 
-    {{-- Body --}}
     {{ $slot }}
 
-    {{-- Subcopy --}}
     @isset($subcopy)
         <x-slot:subcopy>
             <x-mail::subcopy>

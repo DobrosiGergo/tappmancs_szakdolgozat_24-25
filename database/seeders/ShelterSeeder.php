@@ -4,9 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Shelter;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Illuminate\Database\Seeder;
 
 class ShelterSeeder extends Seeder
 {
@@ -25,10 +24,10 @@ class ShelterSeeder extends Seeder
 
             for ($i = 0; $i < $numShelters; $i++) {
                 Shelter::create([
-                    'name' => $faker->company . ' Shelter',
-                    'owner_id' => $owner->id,
+                    'name'        => $faker->company . ' Shelter',
+                    'owner_id'    => $owner->id,
                     'description' => $faker->paragraph(3),
-                    'images' => [], // most üresen, később bővíthető fix path-okkal
+                    'images'      => [],
                 ]);
             }
         }

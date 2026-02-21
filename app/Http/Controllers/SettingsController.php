@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
@@ -6,8 +7,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View;
 
 class SettingsController extends Controller
 {
@@ -18,7 +19,7 @@ class SettingsController extends Controller
 
     public function editProfile(): View
     {
-        return view('auth.settings.profile',[
+        return view('auth.settings.profile', [
             'user' => auth()->user(),
         ]);
     }
@@ -57,7 +58,7 @@ class SettingsController extends Controller
         if ($user->type === 'Shelterowner') {
             $shelter = $user->shelter;
             if ($shelter && $shelter->images) {
-                $images =$shelter->images;
+                $images = $shelter->images;
                 foreach ($images as $imagePath) {
                     if (Storage::disk('public')->exists($imagePath)) {
                         Storage::disk('public')->delete($imagePath);
