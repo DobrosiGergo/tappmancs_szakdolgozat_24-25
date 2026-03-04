@@ -13,11 +13,19 @@ class PetController extends Controller
 {
     public function create()
     {
-        $species = Specie::orderBy('name')->get(['id', 'name']);
-        $breeds  = Breed::orderBy('name')->get(['id', 'name']);
         $shelter = Shelter::where('owner_id', auth()->id())->firstOrFail();
+    
+        return view('pets.create', compact('shelter'));
+    }
 
-        return view('pets.create', compact('species', 'breeds', 'shelter'));
+    public function index()
+    {
+        $pets = Pet::query()
+            ->with(['shelter:id,name', 'species:id,name', 'breed:id,name'])
+            ->latest()
+            ->paginate(12);
+
+        return view('pets.index', compact('pets'));
     }
 
     public function store(PetStoreRequest $request)

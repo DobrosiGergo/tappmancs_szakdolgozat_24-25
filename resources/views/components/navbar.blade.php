@@ -95,9 +95,16 @@
 
           <div class="col-start-9 col-span-2 flex justify-start" x-show="open === 'pets-public'" x-transition>
             <x-navbar.section title="Kisállatok">
-              <x-navbar.link href="#" class="text-white hover:text-black hover:font-bold">Összes</x-navbar.link>
-              <x-navbar.link href="#" class="text-white hover:text-black hover:font-bold">Kutyák</x-navbar.link>
-              <x-navbar.link href="#" class="text-white hover:text-black hover:font-bold">Macskák</x-navbar.link>
+              <x-navbar.link :href="route('pets.index')" class="text-white hover:text-black hover:font-bold">
+                Összes
+              </x-navbar.link>
+
+              <x-navbar.link :href="route('pets.index')" class="text-white hover:text-black hover:font-bold">
+                Kutyák
+              </x-navbar.link>
+              <x-navbar.link :href="route('pets.index')" class="text-white hover:text-black hover:font-bold">
+                Macskák
+              </x-navbar.link>
             </x-navbar.section>
           </div>
 
